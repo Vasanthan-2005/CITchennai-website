@@ -8,11 +8,11 @@
 </head>
 <header>
     <div class="topnav">
-            <img src="https://www.citchennai.edu.in/wp-content/uploads/2019/01/ilp.png" align="left">
-            <img src="https://www.citchennai.edu.in/wp-content/themes/cit/images/tnea.png" align="left">
-            <img src="https://www.citchennai.edu.in/wp-content/themes/cit/images/nba-1.png" align="left">
+            <img src="https://www.citchennai.edu.in/wp-content/uploads/2019/01/ilp.png" style="justify-content:left">
+            <img src="https://www.citchennai.edu.in/wp-content/themes/cit/images/tnea.png" style="justify-content:left" >
+            <img src="https://www.citchennai.edu.in/wp-content/themes/cit/images/nba-1.png" style="justify-content:left">
             <h1 style="text-align: right;">CHENNAI INSTITUTE OF TECHNOLOGY</h1>
-            <img src="https://www.citchennai.edu.in/wp-content/themes/cit/images/logo.png" align="right">
+            <img src="https://www.citchennai.edu.in/wp-content/themes/cit/images/logo.png" style="padding-left: 30%;">
       <a href="index.html">Home</a>
       <a href="department.html">Department</a>
       <a href="placements.html">Placements</a>
@@ -24,23 +24,24 @@
     
 </p>
 <body>
-    <div id="logindiv">
-    <form>
+    <div id="login">
+    <form onsubmit="validateForm()">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name">
 
-      <label for="text">Aadhaar Number:</label>
+      <label for="aadhaarno">Aadhaar Number:</label>
       <input type="text" id="aadhaarno" name="aadhaarno">
 
-      <label for="text">Gender:</label>
+      <label for="gender">Gender:</label>
       <input type="text" name="gender" id="gender">
 
       <label for="email">Email:</label>
       <input type="email" id="email" name="email">
-      <button onclick="message()" id="subtn">submit</button>
+      <input type="submit" value="submit">
     </form>
     </div>
     <h1 id="chaele" style="color: black;text-align: center;"></h1>
+    <h2 id="chaele2" style="color:black;text-align:center;"></h2>
 </body>
 <footer>  
         <div class="main-foot">
@@ -69,11 +70,28 @@
         </div>
     </footer>
     <script>
-        function message(){
-            var a = document.getElementById('logindiv');
-            a.style.display = "none";
-            document.getElementById('chaele').innerHTML="YOUR REPONSE HAS BEEN SUBMITTED";
+        function validateForm(){
+            const name = document.getElementById("name").value
+            const ano = document.getElementById("aadhaarno").value
+            const gender = document.getElementById("gender").value
+            const email = document.getElementById("email").value
+
+            if(name == "" || ano=="" || gender=="" || email==""){
+                alert("PLEASE FILL OUT ALL FIELDS")
+                return false
+            }
+
+
+            if(ano.length!=12){
+                alert("Please enter a valid aadhaar number");
+                return false
+            }
+            
+            document.getElementById("login").innerHTML = "";
+            document.getElementById("chaele").innerHTML = "YOUR FORM ACCEPTED SUCCESSFULLY"
+            document.getElementById("chaele2").innerHTML = "WE WILL CONTACT YOU SOON"
         }
+
     </script>
     <style>
         #subtn{
